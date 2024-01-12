@@ -1,0 +1,20 @@
+.nav {
+    color: black;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 130%;
+    margin-right: 5%;
+    text-align: center;
+    align-items: center;
+}
+
+.logo {
+    color: black;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 165%;
+}
+
+.nav:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,9 @@
+.img_link_home {
+    width: 45px;
+    align-items: center;
+}
+
+.img_link_home:hover {
+    border-radius: 20px;
+    background-color: #d7d7d7;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="~{parts/header}"></head>
+<body style="margin: 0;">
+<div style="position: absolute"> <nav th:replace="~{parts/nav}"></nav> </div>
+    <form   th:action="@{/login}"
+            th:method="post" style="display: flex; flex-direction: column; text-align: center;
+    font-family: Inter,serif;">
+        <img src="/img/loginImg.png" style="width: 100%; margin-top: 8%;">
+        <div style="position: absolute; top: 35%; left: 18%; width: 40%">
+            <div style="color: white; font-size: 350%; margin-left: -25%;"> Log in </div>
+            <div style="display: flex; flex-direction: column; margin-top:10%;">
+                <input th:type="text" name = "username" class="input" required placeholder="Login" >
+                <input th:type="password" name = "password" class="input" required placeholder="Password">
+                <button type="submit" class="submit"> Sign In </button>
+                <a th:href="@{/register}" class = "register"> Register </a>
+            </div>
+        </div>
+    </form>
+    <footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

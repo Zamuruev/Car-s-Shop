@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0;">
+<nav th:replace="~{parts/nav}"></nav>
+<div style="display: flex; height: 100vh; position: relative; padding-top: 8%">
+    <img src="/img/profile.jpg" style="width: 100%">
+    <div style="position: absolute; display: flex; flex-direction: row; margin-top: 13%; margin-left: 20%;">
+        <img th:src="${profile.image_url}" style="width: 20%; box-shadow: 0 0 20px white; padding: 3%; background-color: whitesmoke; border-radius: 20px">
+        <div style="background-color: whitesmoke; border-radius: 20px; width: 60%; padding: 2%; margin-left: 3%; box-shadow: 0 0 20px white">
+            <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+                <div th:text="${profile.firstName}" style="font-family: Inter;  margin-right: 3%; font-size: 180%"></div>
+                <div th:text="${profile.userName}" style="font-family: Inter;  margin-right: 3%; font-size: 180%"></div>
+                <div th:text="${profile.lastName}" style="font-family: Inter; font-size: 180%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

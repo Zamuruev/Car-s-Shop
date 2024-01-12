@@ -1,0 +1,28 @@
+.addBrand {
+    font-family: Inter;
+    font-size: 180%;
+    border-radius: 20px;
+    border: 3px solid black;
+    text-align: center;
+}
+
+.addBrand:hover {
+    box-shadow: 0 0 15px black;
+}
+
+.addBrand:focus {
+    outline: none;
+    box-shadow: 0 0 20px black;
+}
+
+.addBrandBtn {
+    background-color: transparent;
+    font-family: Inter;
+    font-size: 180%;
+    border: none;
+}
+
+.addBrandBtn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

@@ -1,0 +1,13 @@
+.link_in_brands-all {
+    color: #c80808;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 130%;
+    margin-right: 4%;
+    text-align: center;
+    align-items: center;
+}
+
+.link_in_brands-all:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0;">
+<nav th:replace="~{parts/nav}"></nav>
+
+<form th:action="@{/model/add}"
+      th:object="${addModel}"
+      th:method="post"
+      style="display: flex; flex-direction: column; padding:11% 0 2% 0">
+    <h1 style="font-family: Inter; margin-bottom: 5%; text-align: center"> New Model </h1>
+    <input th:field="*{name}"
+           type="text" placeholder="Name" class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"> Error message </div>
+
+    <select name="nameBrand" placeholder="Brand" class = "selectBrand">
+        <option> Brand </option>
+        <option th:each="b : ${brands}" th:text="${b.name}" th:value="${b.name}"></option>
+    </select>
+
+    <select placeholder="Transmission" class = "selectBrand" name="transmission">
+        <option value="Transmission"> Transmission </option>
+        <option value="Manual"> Manual </option>
+        <option value="Automatic"> Automatic </option>
+    </select>
+
+    <select placeholder="Category" class = "selectBrand" name="category">
+        <option value="Category"> Category </option>
+        <option value="Car"> Car </option>
+        <option value="Bus"> Bus </option>
+        <option value="Truck"> Truck </option>
+        <option value="Motorcycle"> Motorcycle </option>
+    </select>
+
+    <select placeholder="Engine" class = "selectBrand" name="engine">
+        <option value="Engine"> Engine </option>
+        <option value="Gasoline"> Gasoline </option>
+        <option value="Diesel"> Diesel </option>
+        <option value="Electric"> Electric </option>
+        <option value="Hybrid"> Hybrid </option>
+    </select>
+
+    <input th:field="*{price}"
+           type="text" placeholder="Price" class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error"> Error message</div>
+
+    <button type="submit" class="addBrandBtn"> Add Model </button>
+
+</form>
+
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

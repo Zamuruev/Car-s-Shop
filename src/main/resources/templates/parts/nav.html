@@ -1,0 +1,25 @@
+<nav style="display: flex; position: fixed; flex-direction: row;
+justify-content: space-between; align-items: center; padding: 3% 10%; background-color: white; width: 100%; z-index: 1;"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th = "http://www.thymeleaf.org">
+    <div style="width: 50%">
+        <a href="/" class = "logo" > Car's Shop </a>
+    </div>
+    <div sec:authorize="!isAuthenticated()"  style="display: flex; position: fixed; flex-direction: row; align-items: center; width: 100%; margin-left: 50%;">
+        <a th:href="@{/model}" class = "nav" > Models </a>
+        <a th:href="@{/brand}" class = "nav" > Brands </a>
+        <a th:href="@{/login}" class = "nav" > Log in </a>
+    </div>
+    <div sec:authorize="isAuthenticated()" style="display: flex; position: fixed; flex-direction: row; align-items: center; width: 100%; margin-left: 20%;">
+        <a sec:authorize="hasRole('Admin')" th:href="@{/user}" class = "nav" > Users </a>
+        <a th:href="@{/model}" class = "nav" > Models </a>
+        <a th:href="@{/brand}" class = "nav" > Brands </a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/basket}" class = "nav" > Basket </a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/offer}" class = "nav" > Offers </a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/profile}" class = "nav" > Profile </a>
+        <form sec:authorize="isAuthenticated()"
+              th:action="@{/logout}"
+              th:method="post" style="width: 100%">
+            <button type="submit" class="nav" style="background-color: transparent; border: none;"> Log out </button>
+        </form>
+    </div>
+</nav>

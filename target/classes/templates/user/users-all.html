@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin: 0;">
+<nav th:replace="~{parts/nav}"></nav>
+<div style="padding-top: 10%; padding-left: 25%">
+  <div style="display: flex; flex-direction: column; ">
+    <div style="margin-left: 25%;">
+      <a sec:authorize="hasRole('Admin')" th:href="@{/user/add}" class="modelLink" style="font-size: 130%"> New User </a>
+      <a sec:authorize="hasRole('Admin')" th:href="@{/user/deleteAll}" class="modelLink" style="font-size: 130%"> Remove All </a>
+    </div>
+    <div th:each="u : ${users}" class = "user">
+      <img th:src="${u.image_url}" class="profilePhoto">
+      <div style="display: flex; flex-direction: column; width: 67%; margin: 2%;">
+        <div style="display: flex; flex-direction: row;">
+          <div th:text="${u.firstName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
+          <div th:text="${u.userName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
+          <div th:text="${u.lastName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
+        </div>
+        <div style="margin-top: 2%;">
+          <a th:href="@{/user/details/{id}(id = ${u.id})}" class = "modelLink"> Details </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

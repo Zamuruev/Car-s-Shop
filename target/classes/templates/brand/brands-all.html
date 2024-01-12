@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0; min-height: 100vh;">
+<nav th:replace="~{parts/nav}"></nav>
+<div style="padding-top: 9%">
+    <div style="text-align: center; margin: 10px 0 40px 0">
+        <a sec:authorize="hasRole('Admin')" th:href="@{/brand/add}" class="link_in_brands-all"> New Brand </a>
+        <a sec:authorize="hasRole('Admin')" th:href="@{/brand/deleteAll}" class="link_in_brands-all"> Remove All </a>
+    </div>
+    <div style="text-align: center;">
+        <a th:href="@{/brand/details/{id}(id = ${b.id})}"
+           th:each="b : ${brands}" style="margin-right: 10px; text-decoration: none">
+            <img th:if="${b.image_url}" th:src="${b.image_url}" class="imgBrand">
+            <img th:unless="${b.image_url}" th:src="@{/img/logoBrand/default.png}" class="imgBrand">
+        </a>
+    </div>
+</div>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

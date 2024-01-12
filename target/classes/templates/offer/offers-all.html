@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin: 0;">
+<nav th:replace="~{parts/nav}"></nav>
+<div style="padding-top: 10%; padding-left: 25%">
+    <div style="display: flex; flex-direction: column; ">
+        <div th:each="o : ${offers}" class = "modelInfo">
+            <img th:src="${o.image_url}" class = "model" style="width: 10%">
+            <div style="display: flex; flex-direction: column; width: 67%; margin: 2%;">
+                <div style="margin-top: 2%; font-family: Inter; font-size: 110%; " th:text="${o.id}"> </div>
+                <div style="margin-top: 2%;">
+                    <a th:href="@{/offer/details/{id}(id = ${o.id})}" class = "modelLink"> Details </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

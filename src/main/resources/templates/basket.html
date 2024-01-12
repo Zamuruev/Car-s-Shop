@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin: 0;">
+<nav th:replace="~{parts/nav}"></nav>
+<div style="padding-top: 10%; padding-left: 25%; ">
+    <div style="display: flex; flex-direction: column; padding-bottom: 11.1%">
+        <div th:each="m : ${models}" class = "modelInfo">
+            <img th:src="${m.image_url}" class = "model">
+            <div style="display: flex; flex-direction: column; width: 67%; margin: 2%;">
+                <div th:text="${m.name}" class = "modelName"></div>
+                <div th:text="'Category: ' + ${m.category}" style="font-family: Inter; font-size: 110%; margin-top: 2%"> </div>
+                <div th:text="'Engine: ' + ${m.engine}" style="font-family: Inter; font-size: 110%; margin-top: 2%"> </div>
+                <div th:text="'Transmission: ' + ${m.transmission}" style="font-family: Inter; font-size: 110%; margin-top: 2%"> </div>
+                <div th:text="'Price: ' + ${m.price}" style="font-family: Inter; font-size: 110%; margin-top: 2%; width: max-content"> </div>
+                <div style="margin-top: 2%;">
+                    <a sec:authorize="hasRole('Admin')" th:href="@{/model/remove/{id}(id = ${m.id})}" class = "modelLink"> Remove </a>
+                    <a th:href="@{/model/details/{id}(id = ${m.id})}" class = "modelLink"> Details </a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/basket/update/{id}(id = ${m.id})}" class = "modelLink"> Remove from Basket </a>
+                </div>
+            </div>
+        </div>
+        <h1 th:if="${models.isEmpty()}" style="margin: 14% 0 0 20%; font-family: Inter;"> Basket is Empty! </h1>
+        <a th:if="${!models.isEmpty()}"
+           th:href="@{/basket/buy}" class = "nav" style="font-size: 180%; margin-left: -25%"> Buy </a>
+    </div>
+</div>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

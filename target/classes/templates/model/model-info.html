@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0;">
+<nav th:replace="~{parts/nav}"></nav>
+
+<div th:object="${detailsModel}" style="padding-top:10%; margin-left: 22%; font-family: Inter">
+    <div>
+        <h1 th:text="*{name}" style="margin:0"> </h1>
+        <div sec:authorize="hasRole('Admin')" style="margin-top: 1%">
+            <a th:if="*{!active.equals('Bought')}" href="" class="modelLink"> Update </a>
+            <a th:if="*{!active.equals('Bought')}" th:href="@{/model/remove/{id}(id = *{id})}" class="modelLink"> Remove </a>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: column; margin-right: 2%">
+            <h2> Specifications </h2>
+            <div th:text="'Category: ' + *{category}"> </div>
+            <div th:text="'Engine: ' + *{engine}"> </div>
+            <div th:text="'Transmission: ' + *{transmission}"> </div>
+            <div th:text="'Brand: ' + *{brand.name}"> </div>
+            <h3  th:text="'Price: ' + *{price}"> </h3>
+            <a th:if="*{active.equals('In Basket')}" sec:authorize="isAuthenticated()" th:href="@{/model/modelActive/{id}(id = *{id})}" class="modelLink"> In Basket </a>
+            <a th:if="*{active.equals('Added')}" sec:authorize="isAuthenticated()" th:href="@{/model/modelActive/{id}(id = *{id})}" class="modelLink"> Remove from Basket </a>
+        </div>
+        <img th:src="*{image_url}" style="width: 50%; border-radius: 20px; margin-top: 2%">
+    </div>
+</div>
+
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.profilePhoto {
+    width: 15%;
+    padding: 2%;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    width: 70%;
+    border-radius: 20px;
+    margin: 15px 0;
+}
+
+.user:hover {
+    box-shadow: 0 0 20px black;
+}
