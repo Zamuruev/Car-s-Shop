@@ -39,6 +39,7 @@ public class Init implements CommandLineRunner {
         BrandDTO Mers = new BrandDTO();
         Mers.setName("Mercedes");
         Mers.setImage_url("/img/logoBrand/mersLogo.jpg");
+        Mers.setTop(4);
         Mers = brandService.addBrand(Mers);
 
         BrandDTO BMW = new BrandDTO();
@@ -54,6 +55,7 @@ public class Init implements CommandLineRunner {
         BrandDTO Lexus = new BrandDTO();
         Lexus.setName("Lexus");
         Lexus.setImage_url("/img/logoBrand/lexLogo.jpg");
+        Lexus.setTop(3);
         Lexus = brandService.addBrand(Lexus);
 
         BrandDTO Nissan = new BrandDTO();
@@ -74,6 +76,7 @@ public class Init implements CommandLineRunner {
         BrandDTO Toyota = new BrandDTO();
         Toyota.setName("Toyota");
         Toyota.setImage_url("/img/logoBrand/toyLogo.jpg");
+        Toyota.setTop(2);
         Toyota = brandService.addBrand(Toyota);
 
         BrandDTO Reno = new BrandDTO();
@@ -92,7 +95,7 @@ public class Init implements CommandLineRunner {
         m1.setCategory(Category.Car);
         m1.setEngine(Engine.Diesel);
         m1.setTransmission(Transmission.Automatic);
-        m1.setPrice(8299000);
+        m1.setPrice(93903.18);
         m1.setBrand(Mers);
         modelService.addModel(m1);
 
@@ -102,7 +105,7 @@ public class Init implements CommandLineRunner {
         m2.setCategory(Category.Car);
         m2.setEngine(Engine.Diesel);
         m2.setTransmission(Transmission.Automatic);
-        m2.setPrice(8511000);
+        m2.setPrice(96301.96);
         m2.setBrand(Mers);
         modelService.addModel(m2);
 
@@ -112,7 +115,7 @@ public class Init implements CommandLineRunner {
         m3.setCategory(Category.Car);
         m3.setEngine(Engine.Diesel);
         m3.setTransmission(Transmission.Automatic);
-        m3.setPrice(19077000);
+        m3.setPrice(215856.26);
         m3.setBrand(Mers);
         modelService.addModel(m3);
 
@@ -122,9 +125,49 @@ public class Init implements CommandLineRunner {
         m4.setCategory(Category.Car);
         m4.setEngine(Engine.Diesel);
         m4.setTransmission(Transmission.Automatic);
-        m4.setPrice(40651607);
+        m4.setPrice(459972.93);
         m4.setBrand(Mers);
         modelService.addModel(m4);
+
+        ModelDTO b1 = new ModelDTO();
+        b1.setName("BMW X5 40i");
+        b1.setImage_url("/img/models/BMW/b1.png");
+        b1.setCategory(Category.Car);
+        b1.setEngine(Engine.Diesel);
+        b1.setTransmission(Transmission.Automatic);
+        b1.setPrice(185687.6);
+        b1.setBrand(BMW);
+        modelService.addModel(b1);
+
+        ModelDTO b2 = new ModelDTO();
+        b2.setName("BMW X6 30d");
+        b2.setImage_url("/img/models/BMW/b2.png");
+        b2.setCategory(Category.Car);
+        b2.setEngine(Engine.Diesel);
+        b2.setTransmission(Transmission.Automatic);
+        b2.setPrice(122474.8);
+        b2.setBrand(BMW);
+        modelService.addModel(b2);
+
+        ModelDTO b3 = new ModelDTO();
+        b3.setName("BMW X5 40d");
+        b3.setImage_url("/img/models/BMW/b3.png");
+        b3.setCategory(Category.Car);
+        b3.setEngine(Engine.Diesel);
+        b3.setTransmission(Transmission.Automatic);
+        b3.setPrice(168191.2);
+        b3.setBrand(BMW);
+        modelService.addModel(b3);
+
+        ModelDTO b4 = new ModelDTO();
+        b4.setName("BMW X5 30d");
+        b4.setImage_url("/img/models/BMW/b4.png");
+        b4.setCategory(Category.Car);
+        b4.setEngine(Engine.Diesel);
+        b4.setTransmission(Transmission.Automatic);
+        b4.setPrice(144475.11);
+        b4.setBrand(BMW);
+        modelService.addModel(b4);
 
         UserDTO admin = new UserDTO();
         admin.setFirstName("Замуруев");
@@ -140,6 +183,7 @@ public class Init implements CommandLineRunner {
         user.setUserName("Екатерина");
         user.setLastName("Александровна");
         user.setLogin("user");
+        //user.setIs_active(true);
         user.setPassword("user");
         user.setRole(Role.User.name());
         userService.addUser(user);

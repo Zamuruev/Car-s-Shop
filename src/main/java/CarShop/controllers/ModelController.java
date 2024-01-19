@@ -96,4 +96,5 @@ public class ModelController {
         modelService.modelActive(id, principal.getName());
         return "redirect:/basket";
     }
+
 }

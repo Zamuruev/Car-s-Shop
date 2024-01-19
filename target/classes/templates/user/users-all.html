@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{parts/header}"></head>
 <body style="margin: 0;">
 <nav th:replace="~{parts/nav}"></nav>
@@ -11,13 +11,16 @@
     </div>
     <div th:each="u : ${users}" class = "user">
       <img th:src="${u.image_url}" class="profilePhoto">
-      <div style="display: flex; flex-direction: column; width: 67%; margin: 2%;">
+      <div style="display: flex; flex-direction: column; width: 67%; height: 10%; margin: 2%;">
         <div style="display: flex; flex-direction: row;">
           <div th:text="${u.firstName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
           <div th:text="${u.userName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
           <div th:text="${u.lastName}" style="font-family: Inter; font-size: 130%; margin-right: 2%"></div>
+          <div th:if="${u.isIs_active() == true}" style="font-family: Inter; font-size: 130%; margin-right: 2%; color: #2b9a00; "> Online </div>
+          <div th:if="${u.isIs_active() == false}" style="font-family: Inter; font-size: 130%; margin-right: 2%; color: #c80808"> Offline </div>
         </div>
         <div style="margin-top: 2%;">
+          <a th:if="${!u.role.equals('Admin')}" th:href="@{/user/delete/{id}(id = ${u.id})}" class = "modelLink"> Remove </a>
           <a th:href="@{/user/details/{id}(id = ${u.id})}" class = "modelLink"> Details </a>
         </div>
       </div>

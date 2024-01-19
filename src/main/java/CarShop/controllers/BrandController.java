@@ -30,6 +30,7 @@ public class BrandController {
     @GetMapping("/details/{id}")
     public String details(@PathVariable String id, Model model) {
         model.addAttribute("infoBrand", brandService.getBrandById(id));
+        brandService.updateTop(id);
         return "brand/brand-info";
     }
 
@@ -68,6 +69,27 @@ public class BrandController {
     public String remove(@PathVariable String id) {
         brandService.deleteBrand(id);
         return "redirect:/brand";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable String id, Model model) {
+        model.addAttribute("updateBrand", brandService.getBrandById(id));
+        return "/brand/brand-update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@PathVariable String id,
+                         @Valid BrandDTO updateBrand,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("updateBrand", updateBrand);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateBrand", bindingResult);
+            return "redirect:/brand/update/" + id;
+        }
+
+        brandService.update(updateBrand.name, id);
+        return "redirect:/brand/details/" + id;
     }
 
 }

@@ -2,8 +2,12 @@ package CarShop.repositories;
 
 
 import CarShop.models.entities.Basket;
+import CarShop.models.entities.Brand;
 import CarShop.models.entities.Model;
 import CarShop.models.entities.Offer;
+import CarShop.models.enums.Category;
+import CarShop.models.enums.Engine;
+import CarShop.models.enums.Transmission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

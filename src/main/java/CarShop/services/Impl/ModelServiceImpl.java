@@ -1,8 +1,12 @@
 package CarShop.services.Impl;
 
 import CarShop.models.dtos.ModelDTO;
+import CarShop.models.entities.Brand;
 import CarShop.models.entities.Model;
 import CarShop.models.entities.User;
+import CarShop.models.enums.Category;
+import CarShop.models.enums.Engine;
+import CarShop.models.enums.Transmission;
 import CarShop.repositories.BasketRepository;
 import CarShop.repositories.BrandRepository;
 import CarShop.repositories.ModelRepository;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ModelServiceImpl implements ModelService {
@@ -73,6 +78,7 @@ public class ModelServiceImpl implements ModelService {
     public List<ModelDTO> allModelsNotBasket() {
         return modelRepository.findAllByActive("In Basket").stream().map((model) -> modelMapper.map(model, ModelDTO.class)).toList();
     }
+
 
     @Override
     public ModelDTO getModelById(String id) {

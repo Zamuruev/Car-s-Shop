@@ -11,4 +11,7 @@ public interface BrandService {
     List<BrandDTO> allBrands();
     BrandDTO getBrandById(String id);
     BrandDTO getBrandByName(String name);
+    void updateTop(String id);
+    List<BrandDTO> findTop3ByOOrderByTopTopDesc();
+    void update(String name, String id);
 }

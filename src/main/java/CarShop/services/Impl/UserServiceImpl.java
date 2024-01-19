@@ -7,6 +7,7 @@ import CarShop.models.enums.Role;
 import CarShop.repositories.BasketRepository;
 import CarShop.repositories.UserRepository;
 import CarShop.services.Interf.UserService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,14 +55,19 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
     public void deleteAllUsers() {
-        userRepository.deleteAll();
+        List<User> users = userRepository.findAllByRole(Role.User);
+        for(User user : users) {
+            basketRepository.deleteByUser(user);
+        }
+        userRepository.deleteAllByRole(Role.User);
     }
 
     @Override
     public List<UserDTO> allUsers() {
-        return userRepository.findAll().stream().map((user) -> modelMapper.map(user, UserDTO.class)).toList();
+        return userRepository.findAllOrderByActive().stream().map((user) -> modelMapper.map(user, UserDTO.class)).toList();
     }
 
     @Override
@@ -83,5 +89,16 @@ public class UserServiceImpl implements UserService {
         user.setModified(LocalDateTime.now());
         user = userRepository.save(user);
         basketRepository.save(new Basket(user));
+    }
+
+    @Override
+    public void updateOnline(String login, boolean active) {
+        userRepository.updateOnline(login,active);
+    }
+
+    @Override
+    public void deleteById(String id) {
+        basketRepository.deleteByUserId(id);
+        userRepository.deleteById(id);
     }
 }

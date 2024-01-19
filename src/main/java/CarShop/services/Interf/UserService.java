@@ -12,4 +12,6 @@ public interface UserService {
     UserDTO getUserById(String id);
     UserDTO getUserByLogin(String login);
     void registerUser(UserDTO userDTO);
+    void updateOnline(String login, boolean active);
+    void deleteById(String id);
 }

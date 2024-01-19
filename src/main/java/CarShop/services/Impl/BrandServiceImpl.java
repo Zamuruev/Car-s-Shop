@@ -59,4 +59,22 @@ public class  BrandServiceImpl implements BrandService {
     public BrandDTO getBrandByName(String name) {
         return modelMapper.map(brandRepository.findBrandByName(name), BrandDTO.class);
     }
+
+    @Override
+    public void updateTop(String id) {
+        BrandDTO updateTopBrand = getBrandById(id);
+        int top = updateTopBrand.getTop() + 1;
+        brandRepository.updateByTop(top,id);
+    }
+
+    @Override
+    public List<BrandDTO> findTop3ByOOrderByTopTopDesc() {
+        return brandRepository.findTop3ByOrderByTopDesc().stream().map((brand) -> modelMapper.map(brand, BrandDTO.class)).toList();
+    }
+
+    @Override
+    public void update(String name, String id) {
+       brandRepository.updateBrand(name, LocalDateTime.now(), id);
+    }
+
 }

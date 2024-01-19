@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0;">
+<nav th:replace="~{parts/nav}"></nav>
+
+<form th:method="post"
+      th:action="@{'/brand/update/' + ${updateBrand.id}}"
+      th:object="${updateBrand}"
+      style="display: flex; flex-direction: column; padding:16% 0 10% 0; text-align: center;">
+    <h1 style="font-family: Inter; margin-bottom: 5%; text-align: center"> Update Brand </h1>
+    <input type="text" placeholder="Brand Name" th:field="*{name}" class="addBrand" style="width: 40%; margin-left: 30%;">
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error" style="margin-top: 2%"></div>
+    <button type="submit" class="addBrandBtn" style="margin-top: 1%"> Update Brand </button>
+
+
+</form>
+
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

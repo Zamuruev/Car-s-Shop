@@ -25,10 +25,16 @@ import java.util.Collections;
 public class SecurityConfig {
 
     private final UserRepository userRepository;
+    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private CustomLogoutSuccessHandler logoutSuccessHandler;
 
     @Autowired
-    public SecurityConfig(UserRepository userRepository) {
+    public SecurityConfig(UserRepository userRepository,
+                          CustomAuthenticationSuccessHandler authenticationSuccessHandler,
+                          CustomLogoutSuccessHandler logoutSuccessHandler) {
         this.userRepository = userRepository;
+        this.authenticationSuccessHandler = authenticationSuccessHandler;
+        this.logoutSuccessHandler = logoutSuccessHandler;
     }
 
     @Bean
@@ -49,12 +55,14 @@ public class SecurityConfig {
                                         loginPage("/login").
                                         usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                                        defaultSuccessUrl("/").
+                                        /*defaultSuccessUrl("/").*/
+                                successHandler(authenticationSuccessHandler).
                                         failureForwardUrl("/login")
                 )
                 .logout((logout) ->
                         logout.logoutUrl("/logout").
-                                logoutSuccessUrl("/login").
+                        logoutSuccessHandler(logoutSuccessHandler).
+                                /*logoutSuccessUrl("/login").*/
                                 invalidateHttpSession(true)
                 ).securityContext(
                         securityContext -> securityContext.

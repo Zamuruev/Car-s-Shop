@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{parts/header}"></head>
 <body style="margin:0;">
 <nav th:replace="~{parts/nav}"></nav>
@@ -19,7 +19,7 @@
             <div th:text="'Engine: ' + *{engine}"> </div>
             <div th:text="'Transmission: ' + *{transmission}"> </div>
             <div th:text="'Brand: ' + *{brand.name}"> </div>
-            <h3  th:text="'Price: ' + *{price}"> </h3>
+            <h3  th:text="'Price: ' + *{price} + ' $'"> </h3>
             <a th:if="*{active.equals('In Basket')}" sec:authorize="isAuthenticated()" th:href="@{/model/modelActive/{id}(id = *{id})}" class="modelLink"> In Basket </a>
             <a th:if="*{active.equals('Added')}" sec:authorize="isAuthenticated()" th:href="@{/model/modelActive/{id}(id = *{id})}" class="modelLink"> Remove from Basket </a>
         </div>

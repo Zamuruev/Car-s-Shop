@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{parts/header}"></head>
 <body style="margin: 0;">
 <nav th:replace="~{parts/nav}"></nav>
 <div style="padding-top: 10%;">
     <div style="display: flex; flex-direction: column;">
         <h1 th:text="'Id: ' + ${idOffer}" style="text-align: center; font-family: Inter;"></h1>
-        <h1 th:text="'User: ' + ${user}" style="text-align: center; font-family: Inter;"></h1>
+       <!-- <h1 th:text="'Login: ' + ${user}" style="text-align: center; font-family: Inter;"></h1>-->
         <div style="margin-left: 15%">
             <div th:each="m : ${models}" style="display: flex; flex-direction: row; font-family: Inter; align-items: center">
                 <img th:src="${m.image_url}" class = "model">
@@ -17,7 +17,7 @@
                     <div th:text="'Engine: ' + ${m.engine}"> </div>
                     <div th:text="'Transmission: ' + ${m.transmission}"> </div>
                     <div th:text="'Brand: ' + ${m.brand.name}"> </div>
-                    <h3  th:text="'Price: ' + ${m.price}"> </h3>
+                    <h3  th:text="'Price: ' + ${m.price} + ' $'"> </h3>
                 </div>
             </div>
         </div>

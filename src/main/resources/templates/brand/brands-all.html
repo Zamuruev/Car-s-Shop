@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{parts/header}"></head>
-<body style="margin:0; min-height: 100vh;">
+<body style="margin:0;">
 <nav th:replace="~{parts/nav}"></nav>
-<div style="padding-top: 9%">
+<div style="padding-top: 9%; padding-bottom: 4%">
     <div style="text-align: center; margin: 10px 0 40px 0">
         <a sec:authorize="hasRole('Admin')" th:href="@{/brand/add}" class="link_in_brands-all"> New Brand </a>
-        <a sec:authorize="hasRole('Admin')" th:href="@{/brand/deleteAll}" class="link_in_brands-all"> Remove All </a>
+        <a th:if="${!brands.isEmpty()}" sec:authorize="hasRole('Admin')" th:href="@{/brand/deleteAll}" class="link_in_brands-all"> Remove All </a>
     </div>
     <div style="text-align: center;">
         <a th:href="@{/brand/details/{id}(id = ${b.id})}"
@@ -15,6 +15,7 @@
             <img th:unless="${b.image_url}" th:src="@{/img/logoBrand/default.png}" class="imgBrand">
         </a>
     </div>
+    <h1 th:if="${brands.isEmpty()}" style="display: flex; align-items: center; justify-content: center; font-family: Inter; margin: 10% 0;"> Brands absent! </h1>
 </div>
 <footer th:replace="~{parts/footer}"></footer>
 </body>

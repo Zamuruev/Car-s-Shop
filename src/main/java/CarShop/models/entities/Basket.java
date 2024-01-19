@@ -32,7 +32,7 @@ public class Basket {
         this.id = id;
     }
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
         return user;

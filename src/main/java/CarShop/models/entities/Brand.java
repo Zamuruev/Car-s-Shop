@@ -8,11 +8,13 @@ import java.util.List;
 public class Brand extends Base {
 
     private String name;
+    private int top = 0;
     private List<Model> model;
 
-    public Brand(String id, String image_url, String name) {
+    public Brand(String id, String image_url, String name, int top) {
         super(id, image_url);
         this.name = name;
+        this.top = top;
     }
 
     protected Brand() {}
@@ -24,6 +26,14 @@ public class Brand extends Base {
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     protected List<Model> getModel() { return model; }
     protected void setModel(List<Model> model) { this.model = model; }
+
+    @Column(name = "top")
+    public int getTop() {
+        return top;
+    }
+    public void setTop(int top) {
+        this.top = top;
+    }
 
     @Override
     public String toString() {

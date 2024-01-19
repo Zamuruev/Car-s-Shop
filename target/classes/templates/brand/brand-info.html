@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{parts/header}"></head>
 <body style="margin:0;">
 <nav th:replace="~{parts/nav}"></nav>
@@ -8,7 +8,8 @@
 <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
     <div sec:authorize="isAuthenticated()" th:text="${infoBrand.name}" style="font-family: Inter; font-size: 250%; margin: 5% 5% 5% 15%; text-align: center"></div>
     <div sec:authorize="!isAuthenticated()" th:text="${infoBrand.name}" style="font-family: Inter; font-size: 250%; margin: 5% 5% 5% 0;"></div>
-    <a sec:authorize="hasRole('Admin')" th:href="@{/brand/remove/{id}(id = ${infoBrand.id})}" class="link_in_brands-all" style="font-size: 130%"> Remove </a>
+    <a sec:authorize="hasRole('Admin')" th:href="@{/brand/remove/{id}(id = ${infoBrand.id})}" class="link_in_brands-all" style="font-size: 130%;"> Remove </a>
+    <a sec:authorize="hasRole('Admin')" th:href="@{/brand/update/{id}(id = ${infoBrand.id})}" class="link_in_brands-all" style="font-size: 130%;"> Update </a>
 </div>
 <footer th:replace="~{parts/footer}"></footer>
 </body>

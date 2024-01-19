@@ -9,11 +9,13 @@ public class BrandDTO {
     public String id;
     public String name;
     public String image_url = "/img/logoBrand/default.png";
+    public int top = 0;
 
-    public BrandDTO(String id, String name, String image_url) {
+    public BrandDTO(String id, String name, String image_url, int top) {
         this.id = id;
         this.name = name;
         this.image_url = image_url;
+        this.top = top;
     }
 
     public BrandDTO() {
@@ -44,8 +46,16 @@ public class BrandDTO {
         this.image_url = image_url;
     }
 
+    public int getTop() {
+        return top;
+    }
+    public void setTop(int top) {
+        this.top = top;
+    }
+
     @Override
     public String toString() {
-        return "BrandDTO: id = " + id +", name = " + name;
+        return "BrandDTO: id = " + id +", name = " + name + ", top = " + top;
     }
+
 }
