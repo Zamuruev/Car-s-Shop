@@ -42,4 +42,11 @@ public interface ModelRepository extends JpaRepository<Model, String> {
     @Query("update Model m set m.active = 'Bought', m.modified = ?1, m.basket = null, m.offer = ?2 where m.basket.id = ?3")
     void updateAllByBasketId(LocalDateTime localDateTime, Offer offer, String basket_id);
 
+    @Transactional
+    @Modifying
+    @Query("update Model m set m.modified = ?2, m.brand = ?3, m.name = ?4, m.category = ?5, " +
+            "m.transmission = ?6, m.engine = ?7, m.price = ?8 where m.id = ?1")
+    void updateModel(String id, LocalDateTime localDateTime, Brand brand,
+                     String name, Category category, Transmission transmission,
+                     Engine engine, double price);
 }

@@ -4,7 +4,7 @@
 <body style="margin:0; position: relative">
 <nav th:replace="~{parts/nav}"></nav>
 <img src="/img/mers.jpg" style="width: 100%; margin-top: 8%">
-<div style="text-align: center;">
+<div th:if="${!topBrand.isEmpty()}" style="text-align: center;">
     <h1 style="margin-top: 2%; font-family: Inter"> Top 3 Brands </h1>
     <a th:href="@{/brand/details/{id}(id = ${b.id})}"
        th:each="b : ${topBrand}" style="margin-right: 10px; text-decoration: none">

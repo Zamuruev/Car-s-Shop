@@ -13,6 +13,7 @@ public class ModelDTO {
     public BrandDTO brand;
     public Category category;
     public String offer;
+    public String basket;
     public double price;
     public Engine engine;
     public Transmission transmission;
@@ -20,7 +21,7 @@ public class ModelDTO {
     public int mileage;
 
     public ModelDTO(String id, String name, String image_url, BrandDTO brand, Category category,
-                    String offer, double price, Engine engine, Transmission transmission, String active, int mileage) {
+                    String offer, double price, Engine engine, Transmission transmission, String active, int mileage, String basket) {
         this.id = id;
         this.name = name;
         this.image_url = image_url;
@@ -32,6 +33,7 @@ public class ModelDTO {
         this.transmission = transmission;
         this.active = active;
         this.mileage = mileage;
+        this.basket = basket;
     }
 
     public ModelDTO() {}
@@ -116,6 +118,13 @@ public class ModelDTO {
         this.mileage = mileage;
     }
 
+    public String getBasket() {
+        return basket;
+    }
+    public void setBasket(String basket) {
+        this.basket = basket;
+    }
+
     @Override
     public String toString() {
         return "ModelDTO{" +
@@ -123,11 +132,12 @@ public class ModelDTO {
                 ", name='" + name + '\'' +
                 ", image_url='" + image_url + '\'' +
                 ", brand=" + brand +
-                ", category='" + category + '\'' +
+                ", category=" + category +
                 ", offer='" + offer + '\'' +
+                ", basket='" + basket + '\'' +
                 ", price=" + price +
-                ", engine='" + engine + '\'' +
-                ", transmission='" + transmission + '\'' +
+                ", engine=" + engine +
+                ", transmission=" + transmission +
                 ", active='" + active + '\'' +
                 ", mileage=" + mileage +
                 '}';

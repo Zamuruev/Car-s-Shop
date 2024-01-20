@@ -22,16 +22,16 @@ public interface BrandRepository extends JpaRepository<Brand,String> {
     @Query("update Brand b set b.top = ?1 where b.id = ?2")
     void updateByTop(int top, String id);
 
-    @Modifying
-    @Transactional
-    void deleteByName(String name);
-
     @Query("SELECT b FROM Brand b order by b.top desc limit 3")
     List<Brand> findTop3ByOrderByTopDesc();
 
     @Transactional
     @Modifying
     @Query("update Brand b set b.name = ?1, b.modified = ?2 where b.id = ?3")
-    public void updateBrand(String name, LocalDateTime now, String id);
+    void updateBrand(String name, LocalDateTime now, String id);
+
+    @Modifying
+    @Transactional
+    void deleteByName(String name);
 
 }

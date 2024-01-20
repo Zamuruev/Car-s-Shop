@@ -1,6 +1,7 @@
 package CarShop.models.dtos;
 
 import CarShop.utils.validation.brand.UniqueBrandName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -8,7 +9,7 @@ public class BrandDTO {
 
     public String id;
     public String name;
-    public String image_url = "/img/logoBrand/default.png";
+    public String image_url ="/img/logoBrand/default.png";
     public int top = 0;
 
     public BrandDTO(String id, String name, String image_url, int top) {
@@ -18,9 +19,7 @@ public class BrandDTO {
         this.top = top;
     }
 
-    public BrandDTO() {
-
-    }
+    public BrandDTO() {}
 
     public String getId() {
         return id;

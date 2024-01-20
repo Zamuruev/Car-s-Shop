@@ -2,6 +2,7 @@ package CarShop.controllers;
 
 import CarShop.services.Interf.BasketService;
 import CarShop.services.Interf.ModelService;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class BasketController {
 
     private final BasketService basketService;
     private final ModelService modelService;
+    private static final Logger LOG = Logger.getLogger(Controller.class);
 
     @Autowired
     public BasketController(BasketService basketService, ModelService modelService) {
@@ -27,6 +29,7 @@ public class BasketController {
     @GetMapping
     public String basket(Model model, Principal principal) {
         model.addAttribute("models", basketService.modelsInBasket(principal.getName()));
+        LOG.log(Logger.Level.INFO, "A user with a login: '" + principal.getName() + "' going to place an order!");
         return "basket";
     }
 

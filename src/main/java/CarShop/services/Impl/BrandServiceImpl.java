@@ -6,12 +6,17 @@ import CarShop.repositories.BrandRepository;
 import CarShop.services.Interf.BrandService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@EnableCaching
 public class  BrandServiceImpl implements BrandService {
 
     private final ModelMapper modelMapper;
@@ -27,6 +32,7 @@ public class  BrandServiceImpl implements BrandService {
         this.brandRepository = brandRepository;
     }
 
+    @CacheEvict(cacheNames = "brands", allEntries = true)
     @Override
     public BrandDTO addBrand(BrandDTO brandDTO) {
         Brand newBrand = modelMapper.map(brandDTO, Brand.class);
@@ -35,19 +41,24 @@ public class  BrandServiceImpl implements BrandService {
         return modelMapper.map(brandRepository.save(newBrand), BrandDTO.class);
     }
 
+    @CacheEvict(cacheNames = "brands", allEntries = true)
     @Override
     public void deleteBrand(String id) {
         brandRepository.deleteById(id);
     }
 
+    @CacheEvict(cacheNames = "brands", allEntries = true)
     @Override
     public void deleteAllBrands() {
         brandRepository.deleteAll();
     }
 
+    @Cacheable("brands")
     @Override
     public List<BrandDTO> allBrands() {
-        return brandRepository.findAll().stream().map((brand) -> modelMapper.map(brand, BrandDTO.class)).toList();
+        return brandRepository.findAll().stream()
+                .map(brand -> modelMapper.map(brand, BrandDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -60,6 +71,7 @@ public class  BrandServiceImpl implements BrandService {
         return modelMapper.map(brandRepository.findBrandByName(name), BrandDTO.class);
     }
 
+    @CacheEvict(cacheNames = "brands", allEntries = true)
     @Override
     public void updateTop(String id) {
         BrandDTO updateTopBrand = getBrandById(id);
@@ -69,9 +81,10 @@ public class  BrandServiceImpl implements BrandService {
 
     @Override
     public List<BrandDTO> findTop3ByOOrderByTopTopDesc() {
-        return brandRepository.findTop3ByOrderByTopDesc().stream().map((brand) -> modelMapper.map(brand, BrandDTO.class)).toList();
+        return brandRepository.findTop3ByOrderByTopDesc().stream().map((brand) -> modelMapper.map(brand, BrandDTO.class)).collect(Collectors.toList());
     }
 
+    @CacheEvict(cacheNames = "brands", allEntries = true)
     @Override
     public void update(String name, String id) {
        brandRepository.updateBrand(name, LocalDateTime.now(), id);

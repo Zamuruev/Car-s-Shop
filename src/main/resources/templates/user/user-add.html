@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="~{parts/header}"></head>
+<body style="margin:0">
+<nav th:replace="~{parts/nav}"></nav>
+
+<form th:action="@{/user/add}"
+      th:method="post"
+      th:object="${addUser}"
+      style="display: flex; flex-direction: column; padding:11% 0 2% 0">
+    <h1 style="font-family: Inter; margin-bottom: 5%; text-align: center"> Add User Form </h1>
+    <input th:field="*{firstName}"
+           type="text" placeholder="First Name" class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error"> Error message</div>
+
+    <input th:field="*{userName}"
+           type="text" placeholder="User Name"  class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error"> Error message</div>
+    <input th:field="*{lastName}"
+           type="text" placeholder="Last Name"  class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <select name="role" class = "selectBrand">
+        <option> Role </option>
+        <option> Admin </option>
+        <option> User </option>
+    </select>
+    <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error"> Error message</div>
+    <input th:field="*{login}"
+           type="text" placeholder="Login"  class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"> Error message</div>
+    <input  th:field="*{password}"
+            type="text" placeholder="Password"  class = "addBrand" style="width: 30%; margin-bottom: 2%; margin-left: 35%">
+    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"> Error message</div>
+    <button type="submit" class="addBrandBtn"> New User </button>
+</form>
+<footer th:replace="~{parts/footer}"></footer>
+</body>
+</html>

@@ -12,4 +12,5 @@ public interface ModelService {
     ModelDTO getModelById(String id);
     void modelActive(String id, String login);
     void deleteAllModelsByActive();
+    void updateModel(ModelDTO modelDTO);
 }

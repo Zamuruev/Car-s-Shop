@@ -8,8 +8,8 @@
     <div>
         <h1 th:text="*{name}" style="margin:0"> </h1>
         <div sec:authorize="hasRole('Admin')" style="margin-top: 1%">
-            <a th:if="*{!active.equals('Bought')}" href="" class="modelLink"> Update </a>
-            <a th:if="*{!active.equals('Bought')}" th:href="@{/model/remove/{id}(id = *{id})}" class="modelLink"> Remove </a>
+            <a  th:if="${!detailsModel.active.equals('Added')}" th:href="@{/model/update/{id}(id = *{id})}" class="modelLink"> Update </a>
+            <a th:if="${!detailsModel.active.equals('Added')}" th:href="@{/model/remove/{id}(id = *{id})}" class="modelLink"> Remove </a>
         </div>
     </div>
     <div style="display: flex; flex-direction: row;">

@@ -1,4 +1,4 @@
-package CarShop;
+package CarShop.Config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration.AccessLevel;

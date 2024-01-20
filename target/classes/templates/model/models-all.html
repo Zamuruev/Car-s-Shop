@@ -12,7 +12,7 @@
     </div>
 
     <div style="display: flex; flex-direction: row;">
-            <form th:action="@{/model}"
+            <!--<form th:action="@{/model}"
                   th:method="post"
                     th:if="${!models.isEmpty()}" class = "filterSearch" style="position: fixed; width:19%">
                 <select placeholder="Brand" class = "search" name="Brand">
@@ -42,7 +42,7 @@
                 <input type="number" placeholder="Max Price" class = "search" style="width: 95%">
                 <button type="submit" class="modelLink" style="margin-top: 4%; background-color: transparent; border: none"> Show </button>
                 <button type="reset" class="modelLink" style="margin-top: 4%; background-color: transparent; border: none"> Reset </button>
-            </form>
+            </form>-->
         <h1 th:if="${models.isEmpty()}" style="font-family: Inter; font-size: 200%; margin:13% 0 13% 40%"> Models absent! </h1>
 
         <div style="display: flex; flex-direction: column; margin-left: 25%;">

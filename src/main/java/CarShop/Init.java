@@ -1,4 +1,4 @@
-package CarShop.init;
+package CarShop;
 
 import CarShop.models.dtos.BrandDTO;
 import CarShop.models.dtos.ModelDTO;

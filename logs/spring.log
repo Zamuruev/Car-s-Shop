@@ -1,0 +1,31 @@
+2024-01-21T00:35:31.704+03:00  INFO 18136 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-21T00:35:31.757+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    alter table basket 
+       drop 
+       foreign key FKfp7yinn3dh4sy1ia364xp3d9g
+2024-01-21T00:35:31.802+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    alter table model 
+       drop 
+       foreign key FK5ftwsdpsxk3oc24lq3cbvutlw
+2024-01-21T00:35:31.822+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    alter table model 
+       drop 
+       foreign key FKhbgv4j3vpt308sepyq9q79mhu
+2024-01-21T00:35:31.841+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    alter table model 
+       drop 
+       foreign key FKpc266bcrq00sh67wt3emtinot
+2024-01-21T00:35:31.859+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    alter table offer 
+       drop 
+       foreign key FK2ko2h0jhywhu3uarlv22tyxdd
+2024-01-21T00:35:31.874+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists basket
+2024-01-21T00:35:31.889+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists brand
+2024-01-21T00:35:31.905+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists model
+2024-01-21T00:35:31.920+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists offer
+2024-01-21T00:35:31.937+03:00 DEBUG 18136 --- [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists user

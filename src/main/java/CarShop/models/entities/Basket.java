@@ -48,4 +48,11 @@ public class Basket {
     public void setModels(List<Model> models) {
         this.models = models;
     }
+
+    @Override
+    public String toString() {
+        return "Basket: " +
+                "id = " + id + '\'' +
+                ", user = " + user;
+    }
 }

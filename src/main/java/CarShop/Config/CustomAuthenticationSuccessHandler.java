@@ -1,4 +1,4 @@
-package CarShop;
+package CarShop.Config;
 import CarShop.repositories.UserRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

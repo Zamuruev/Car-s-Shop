@@ -1,4 +1,4 @@
-package CarShop;
+package CarShop.Config;
 
 import CarShop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +47,9 @@ public class SecurityConfig {
                                         .permitAll()
                                         .requestMatchers("/login", "/register", "/", "/model","/model/details/{id}", "/brand", "/brand/details/{id}")
                                         .permitAll()
+                                        .requestMatchers("/brand/add", "/brand/deleteAll", "/brand/remove/{id}",
+                                                "/brand/update/{id}", "/model/add", "/model/deleteAll","/model/deleteAllByActive"
+                                        ,"/model/remove/{id}","/model/update/{id}","/user/deleteAll", "/user/delete/{id}", "/user/add").hasRole("Admin")
                                         .anyRequest().authenticated()
                 )
                 .formLogin(

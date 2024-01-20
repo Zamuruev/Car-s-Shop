@@ -1,5 +1,6 @@
 package CarShop.controllers;
 
+import CarShop.models.dtos.BrandDTO;
 import CarShop.models.dtos.ModelDTO;
 import CarShop.models.enums.Category;
 import CarShop.models.enums.Engine;
@@ -45,6 +46,7 @@ public class ModelController {
     @GetMapping("/details/{id}")
     public String details(@PathVariable String id, Model model) {
         model.addAttribute("detailsModel", modelService.getModelById(id));
+        System.out.println(modelService.getModelById(id));
         return "/model/model-info";
     }
 
@@ -95,6 +97,32 @@ public class ModelController {
     public String modelActive(@PathVariable String id, Principal principal) {
         modelService.modelActive(id, principal.getName());
         return "redirect:/basket";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(Model model, @PathVariable String id) {
+        model.addAttribute("updateModel", modelService.getModelById(id));
+        model.addAttribute("brands", brandService.allBrands());
+        return "/model/model-update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String update(@Valid ModelDTO updateModel, BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes, @RequestParam String nameBrand, @RequestParam String transmission,
+                         @RequestParam String category, @RequestParam String engine) {
+        if(bindingResult.hasErrors() || transmission == "Transmission" || engine == "Engine" || category == "Category" || nameBrand == "Brand" || nameBrand.isEmpty()) {
+            redirectAttributes.addFlashAttribute("updateModel", updateModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.updateModel", bindingResult);
+            return "redirect:/model/update/{id}";
+        }
+        BrandDTO brandDTO = brandService.getBrandByName(nameBrand);
+        updateModel.setBrand(brandDTO);
+        updateModel.setTransmission(Transmission.valueOf(transmission));
+        updateModel.setCategory(Category.valueOf(category));
+        updateModel.setEngine(Engine.valueOf(engine));
+        System.out.println(updateModel);
+        modelService.updateModel(updateModel);
+        return "redirect:/model/details/{id}";
     }
 
 }
